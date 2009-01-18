@@ -110,16 +110,14 @@ running on will be selected."
     (compile (concat "/usr/bin/java -classpath \""
 		     (apply 'make-java-classpath
 			    (mapcar (lambda (x) (expand-file-name (concat processing-location x)))
-				    '("java/lib/rt.jar"
-				      "java/lib/tools.jar"
-				      "lib/antlr.jar" "lib/core.jar"
-				      "lib/ecj.jar" "lib/jna.jar"
-				      "lib/pde.jar")))
+				    '("antlr.jar" "core.jar"
+				      "ecj.jar" "jna.jar"
+				      "pde.jar")))
 		     "\" processing.app.Commander"
 		     " --sketch=\"" (expand-file-name sketch-dir)
 		     "\" --output=\"" (expand-file-name output-dir)
 		     ;; Remove this comment when Processing implements the --preferences=??? command-line option.
-		     ;;"\" --preferences=\"" (expand-file-name "~/.processing/preferences.txt")
+		     "\" --preferences=\"" (expand-file-name "~/Library/Processing/preferences.txt")
 		     "\" --" cmd
 		     (if (string= cmd "export-application")
 			 (concat " --platform="
